@@ -1,4 +1,6 @@
-export class Greeter {
+import './enums';
+
+export class DreamSpellDate {
   private greeting: string;
 
   constructor(message: string) {
