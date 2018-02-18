@@ -21,14 +21,15 @@
       "type": "node",
       "request": "launch",
       "name": "Debug test",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "args": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/jest/bin/jest.js",
+        "--runInBand",
         "--findRelatedTests",
-        "${relativeFile}",
-        "--env",
-        "jest-environment-node-debug"
+        "${relativeFile}"
       ],
-      "cwd": "${workspaceRoot}"
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal"
     }
   ]
 }
