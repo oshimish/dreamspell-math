@@ -1,7 +1,8 @@
 import * as index from '../src/index';
+import Kin from '../src/Kin';
 
-test('Should have Greeter available', () => {
-  expect(index.DreamSpellDate).toBeTruthy();
-  expect(index.Kin).toBeTruthy();
-  expect(index.Tone).toBeTruthy();
+test('Should have Kin available', () => {
+  // expect(index.DreamSpellDate).toBeTruthy();
+  expect(new Kin(1)).toBeTruthy();
+ // expect(index.Tone).toBeTruthy();
 });
