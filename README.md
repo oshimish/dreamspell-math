@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/oshimish/moment-dreamspell.svg?branch=master)](https://travis-ci.org/oshimish/moment-dreamspell.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/oshimish/moment-dreamspell/badge.svg?branch=master)](https://coveralls.io/github/oshimish/moment-dreamspell?branch=master)
+[![Build Status](https://travis-ci.org/oshimish/dreamspell-math.svg?branch=master)](https://travis-ci.org/oshimish/dreamspell-math.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/oshimish/dreamspell-math/badge.svg?branch=master)](https://coveralls.io/github/oshimish/dreamspell-math?branch=master)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 # Using this module in other modules
@@ -8,27 +8,27 @@ Here is a quick example of how this module can be used in other modules. The [Ty
 
 > If you are planning to have code in multiple files (which is quite natural for a NodeJS module) that users can import, make sure you update `src/index.ts` file appropriately.
 
-Now assuming you have published this amazing module to _npm_ with the name `my-amazing-lib`, and installed it in the module in which you need it -
+Now assuming you have published this amazing module to _npm_ with the name `dreamspell-math`, and installed it in the module in which you need it -
 
-- To use the `Greeter` class in a TypeScript file -
+- To use the `DreamSpellDate` class in a TypeScript file -
 
 ```ts
-import { Greeter } from "my-amazing-lib";
+import { DreamSpellDate } from "dreamspell-math";
 
-const greeter = new Greeter("World!");
+const greeter = new DreamSpellDate("World!");
 greeter.greet();
 ```
 
-- To use the `Greeter` class in a JavaScript file -
+- To use the `DreamSpellDate` class in a JavaScript file -
 
 ```js
-const Greeter = require('my-amazing-lib').Greeter;
+const DreamSpellDate = require('dreamspell-math').DreamSpellDate;
 
-const greeter = new Greeter('World!');
+const greeter = new DreamSpellDate('World!');
 greeter.greet();
 ```
 
 ## Setting travis and coveralls badges
 1. Sign in to [travis](https://travis-ci.org/) and activate the build for your project.
 2. Sign in to [coveralls](https://coveralls.io/) and activate the build for your project.
-3. Replace oshimish/moment-dreamspell with your repo details like: "ospatil/generator-node-typescript".
+3. Replace oshimish/dreamspell-math with your repo details like: "ospatil/generator-node-typescript".
