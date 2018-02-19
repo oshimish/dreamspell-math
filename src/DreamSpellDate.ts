@@ -1,31 +1,33 @@
 ﻿import { Moment } from 'moment';
+import { Chromatic, Dots } from './enums';
 import Kin from './Kin';
 import Tone from './Tone';
 const moment = require('moment');
 
 export default class DreamSpellDate {
-  public DayOfYear: number;
-  public Moon: number;
-  public Week: Chromatic;
-  public Plasma: number;
-  public DayOfWeek: number;
-  public Day: number;
-  public YearKin: Kin;
-  public Kin: Kin;
+  public readonly DayOfYear: number;
+  public readonly Moon: number;
+  public readonly Week: Chromatic;
+  public readonly Plasma: number;
+  public readonly DayOfWeek: number;
+  public readonly Day: number;
+  public readonly YearKin: Kin;
+  public readonly Kin: Kin;
 
-  constructor(dateTime: Moment) {
-    this.Kin = new Kin(this.GetKinFromDateTime(dateTime));
+  constructor(date: Date) {
+    const dateMoment = moment(date);
+    this.Kin = new Kin(this.GetKinFromDateTime(dateMoment.clone()));
 
     // 13-28
 
-    let yearBirthday = moment(dateTime.year(), 7, 26);
+    let yearBirthday = moment([dateMoment.year(), 7-1, 26]);
 
     // before gr new year
-    if (dateTime < yearBirthday) {
-      yearBirthday = yearBirthday.AddYears(-1);
+    if (dateMoment.isBefore(yearBirthday)) {
+      yearBirthday = yearBirthday.add(-1, 'year');
     }
 
-    this.DayOfYear = dateTime.diff(yearBirthday, 'days');
+    this.DayOfYear = dateMoment.diff(yearBirthday, 'days');
     this.Moon = this.DayOfYear / 28 + 1;
     this.Day = this.DayOfYear % 28 + 1;
     // Day = Day == 0 ? 28 : Day;
@@ -48,7 +50,7 @@ export default class DreamSpellDate {
       dateTime = dateTime.add(1, 'year');
     }
 
-    let days = dateTime.diff(moment(2010, 12, 24), 'days');
+    let days = dateTime.diff(moment([2010, 12-1, 24]), 'days');
 
     while (days < 0) {
       days += 260;

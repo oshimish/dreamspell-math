@@ -1,86 +1,74 @@
+import { isNull, isNullOrUndefined } from 'util';
+import { Chromatic, Dots } from '../src/enums';
+import Oracle from './Oracle';
+import Sign from './Sign';
 import Tone from './Tone';
 
 export default class Kin {
   public static Create(sign: Sign, tone: Tone): Kin {
-    if (sign < 0) {
-      throw new Error('sign');
+    if (isNullOrUndefined(sign)) {
+      throw new Error('sign is null or underfined');
     }
 
-    let i = tone.Up().Number;
-    while (new Kin(i).Sign() !== sign) {
+    if (isNullOrUndefined(tone)) {
+      throw new Error('tone is null or underfined');
+    }
+
+    let i = tone.Normilize().Number;
+    while (!sign.Is(new Kin(i).Sign)) {
       i += 13;
     }
 
     return new Kin(i);
   }
 
-  public Index: number;
+  public readonly Index: number;
+  public readonly Sign: Sign;
+  public readonly Tone: Tone;
+
+  public readonly WaveSpell: Sign;
+  public readonly Chromatic: Chromatic;
 
   constructor(index: number) {
-    this.Index = index;
-  }
+    index = index % 260;
 
-  public Tone(): Tone {
-    return new Tone(this.Index % 13);
-  }
-
-  public Sign(): Sign {
-    return this.Index % 20;
-  }
-
-  public Chromatic(): Chromatic {
-    let ind = this.Index % 4;
-    ind = ind === 0 ? 4 : ind;
-    return ind;
-  }
-
-  public WaveSpell(): Sign {
-    return (this.Sign() - (this.Tone().Up().Number - 1) + 2 * 20) % 20;
-  }
-
-  public Power(): number {
-    return 1;
-  }
-
-  public SummaryKin(): Kin {
-    return new Kin(0);
-  }
-
-  public Analog(): Kin {
-    return Kin.Create((19 - Sign.Up(this.Sign()) + 2 * 20) % 20, this.Tone());
-  }
-
-  public Driver(): Kin {
-    let sign = Sign.Up(this.Sign());
-
-    switch (this.Tone().Notation()) {
-      case GNotation.Line:
-        sign += 8;
-        break;
-      case GNotation.OneDot:
-        // nothing
-        break;
-      case GNotation.TwoDots:
-        sign -= 8;
-        break;
-      case GNotation.ThreeDots:
-        sign += 4;
-        break;
-      case GNotation.FourDots:
-        sign -= 4;
-        break;
+    if(index === 0){
+      index = 260;
     }
 
-    sign = (sign + 2 * 20) % 20;
+    this.Index = index;
+    this.Tone = new Tone(this.Index % 13);
+    this.Sign = new Sign(this.Index % 20);
 
-    return Kin.Create(sign, this.Tone());
+    this.WaveSpell = this.getWaveSpell();
+    this.Chromatic = this.getChromatic();
   }
 
-  public Antipod(): Kin {
-    return new Kin(260 / 2 + this.Index);
+  public Oracle(): Oracle {
+    return new Oracle(this);
   }
 
-  public Occult(): Kin {
-    return new Kin(1 - this.Index + 2 * 260);
+  // public Power(): number {
+  //   return 1;
+  // }
+
+  // public SummaryKin(): Kin {
+  //   return new Kin(0);
+  // }
+
+  public Is(kin: Kin): boolean {
+    return kin.Index === this.Index;
+  }
+
+  private getChromatic(): Chromatic {
+    let ind = this.Index % 4;
+    ind = ind === 0 ? 4 : ind;
+    return ind as Chromatic;
+  }
+
+  private getWaveSpell(): Sign {
+    return new Sign(
+      (this.Sign.Number - (this.Tone.Normilize().Number - 1) + 2 * 20) % 20
+    );
   }
 }

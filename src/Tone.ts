@@ -1,4 +1,4 @@
-import './enums';
+import { Dots } from './enums';
 
 export default class Tone {
   public static readonly Magnetic: Tone = new Tone(1);
@@ -15,9 +15,9 @@ export default class Tone {
   public static readonly Crystal: Tone = new Tone(12);
   public static readonly Cosmic: Tone = new Tone(13);
 
-  public Number: number;
+  public readonly Number: number;
 
-  public constructor(num: number = 0) {
+  public constructor(num: number = 1) {
     num = num % 13;
     if (num === 0) {
       num = 13;
@@ -58,37 +58,30 @@ export default class Tone {
     return 'Unknown';
   }
 
-  public Up(): Tone {
+  public Normilize(): Tone {
     return new Tone(this.Number === 0 ? 13 : this.Number);
   }
 
-  public Notation(): GNotation {
-    if (
-      this === Tone.Magnetic ||
-      this === Tone.Rhythmic ||
-      this === Tone.Spectral
-    ) {
-      return GNotation.OneDot;
-    }
-    if (
-      this === Tone.Lunar ||
-      this === Tone.Resonant ||
-      this === Tone.Crystal
-    ) {
-      return GNotation.TwoDots;
-    }
-    if (
-      this === Tone.Electric ||
-      this === Tone.Galactic ||
-      this === Tone.Cosmic
-    ) {
-      return GNotation.ThreeDots;
-    }
-    if (this === Tone.SelfExisting || this === Tone.Solar) {
-      return GNotation.FourDots;
-    }
-    if (this === Tone.Overtone || this === Tone.Planetary) {
-      return GNotation.Line;
+  public Is(other: Tone): boolean {
+    return this.Number === other.Number;
+  }
+
+  public Notation(): Dots {
+    const dots = this.Number % 5;
+    switch (dots) {
+      case 1:
+        return Dots.OneDot;
+      case 2:
+        return Dots.TwoDots;
+      case 3:
+        return Dots.ThreeDots;
+      case 4:
+        return Dots.FourDots;
+      case 0:
+        return Dots.Line;
+
+      default:
+        break;
     }
     throw new Error();
   }
