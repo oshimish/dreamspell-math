@@ -20,7 +20,7 @@ export default class DreamSpellDate {
 
     // 13-28
 
-    let yearBirthday = moment([dateMoment.year(), 7-1, 26]);
+    let yearBirthday = moment([dateMoment.year(), 7 - 1, 26]);
 
     // before gr new year
     if (dateMoment.isBefore(yearBirthday)) {
@@ -28,29 +28,29 @@ export default class DreamSpellDate {
     }
 
     this.DayOfYear = dateMoment.diff(yearBirthday, 'days');
-    this.Moon = this.DayOfYear / 28 + 1;
+    this.Moon = Math.floor(this.DayOfYear / 28) + 1;
     this.Day = this.DayOfYear % 28 + 1;
     // Day = Day == 0 ? 28 : Day;
     this.YearKin = new Kin(this.GetKinFromDateTime(yearBirthday));
     this.DayOfWeek = this.Day % 7;
     this.DayOfWeek = this.DayOfWeek === 0 ? 7 : this.DayOfWeek;
     this.Plasma = this.DayOfWeek;
-    this.Week = (this.Day - 1) / 7 + 1;
+    this.Week = Math.floor((this.Day - 1) / 7) + 1;
   }
 
-  private GetKinFromDateTime(dateTime: Moment): number {
+  private GetKinFromDateTime(dateMoment: Moment): number {
     let dayFix = 0;
-    while (dateTime.year() > 2010) {
+    while (dateMoment.year() > 2010) {
       dayFix -= 365;
-      dateTime = dateTime.add(-1, 'year');
+      dateMoment = dateMoment.add(-1, 'year');
     }
 
-    while (dateTime.year() < 2010) {
+    while (dateMoment.year() < 2010) {
       dayFix += 365;
-      dateTime = dateTime.add(1, 'year');
+      dateMoment = dateMoment.add(1, 'year');
     }
 
-    let days = dateTime.diff(moment([2010, 12-1, 24]), 'days');
+    let days = dateMoment.diff(moment([2010, 12 - 1, 24]), 'days') - dayFix;
 
     while (days < 0) {
       days += 260;

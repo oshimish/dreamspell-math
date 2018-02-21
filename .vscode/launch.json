@@ -29,7 +29,7 @@
         "${relativeFile}"
       ],
       "cwd": "${workspaceRoot}",
-      "console": "integratedTerminal"
+      // "console": "integratedTerminal"
     }
   ]
 }

@@ -32,7 +32,7 @@ export default class Kin {
   constructor(index: number) {
     index = index % 260;
 
-    if(index === 0){
+    if (index === 0) {
       index = 260;
     }
 
