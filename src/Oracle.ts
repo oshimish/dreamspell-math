@@ -1,6 +1,6 @@
 import { Chromatic, Dots } from '../src/enums';
-import Kin from './Kin';
-import Sign from './Sign';
+import {Kin } from './Kin';
+import {Sign} from './Sign';
 
 export default class Oracle {
   public readonly Kin: Kin;

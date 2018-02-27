@@ -1,4 +1,4 @@
-import Tone from '../src/Tone';
+import {Tone} from '../src/Tone';
 
 test('Should get a number for a tone', () => {
   const tone = new Tone(1);

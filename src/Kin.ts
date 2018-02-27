@@ -1,10 +1,10 @@
 import { isNull, isNullOrUndefined } from 'util';
 import { Chromatic, Dots } from '../src/enums';
 import Oracle from './Oracle';
-import Sign from './Sign';
-import Tone from './Tone';
+import {Sign} from './Sign';
+import {Tone} from './Tone';
 
-export default class Kin {
+export class Kin {
   public static Create(sign: Sign, tone: Tone): Kin {
     if (isNullOrUndefined(sign)) {
       throw new Error('sign is null or underfined');
@@ -56,8 +56,8 @@ export default class Kin {
   //   return new Kin(0);
   // }
 
-  public Is(kin: Kin): boolean {
-    return kin.Index === this.Index;
+  public Is(kin2: Kin): boolean {
+    return kin2.Index === this.Index;
   }
 
   private getChromatic(): Chromatic {
@@ -72,3 +72,7 @@ export default class Kin {
     );
   }
 }
+
+export function kin(num : number){ return new Kin(num) }
+
+export default kin

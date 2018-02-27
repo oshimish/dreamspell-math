@@ -1,4 +1,4 @@
-export default class Sign {
+export class Sign {
   public static readonly RedDragon: Sign = new Sign(1);
   public static readonly WhiteWind: Sign = new Sign(2);
   public static readonly BlueNight: Sign = new Sign(3);
@@ -47,7 +47,11 @@ export default class Sign {
     return new Sign(this.Number === 0 ? 20 : this.Number);
   }
 
-  public Is(sign: Sign): boolean {
-    return sign.Number === this.Number;
+  public Is(sign2: Sign): boolean {
+    return sign2.Number === this.Number;
   }
 }
+
+export function sign(num : number){ return new Sign(num) };
+
+export default sign

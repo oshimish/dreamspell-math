@@ -1,10 +1,11 @@
 ﻿import { Moment } from 'moment';
 import { Chromatic, Dots } from './enums';
-import Kin from './Kin';
-import Tone from './Tone';
+import {Kin} from './Kin';
+import {Tone} from './Tone';
+// tslint:disable-next-line:no-var-requires
 const moment = require('moment');
 
-export default class DreamSpellDate {
+export class DreamDate {
   public readonly DayOfYear: number;
   public readonly Moon: number;
   public readonly Week: Chromatic;
@@ -60,3 +61,9 @@ export default class DreamSpellDate {
     return kin;
   }
 }
+
+export function dreamdate(date : Date) : DreamDate{
+  return new DreamDate(date);
+}
+
+export default {DreamDate, dreamdate}

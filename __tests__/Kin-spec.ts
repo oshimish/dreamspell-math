@@ -1,7 +1,7 @@
 import { Chromatic } from '../src/enums';
-import Kin from '../src/Kin';
-import Sign from '../src/Sign';
-import Tone from '../src/Tone';
+import {Kin} from '../src/Kin';
+import {Sign} from '../src/Sign';
+import {Tone} from '../src/Tone';
 
 test('Should get a correct signs and tones for the specific kins', () => {
   const kin81 = new Kin(81);

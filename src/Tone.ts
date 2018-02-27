@@ -1,6 +1,6 @@
 import { Dots } from './enums';
 
-export default class Tone {
+export class Tone {
   public static readonly Magnetic: Tone = new Tone(1);
   public static readonly Lunar: Tone = new Tone(2);
   public static readonly Electric: Tone = new Tone(3);
@@ -86,3 +86,7 @@ export default class Tone {
     throw new Error();
   }
 }
+
+export function tone(num : number){ return new Tone(num) }
+
+export default tone
