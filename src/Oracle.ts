@@ -1,4 +1,4 @@
-import { Chromatic, Dots } from '../src/enums';
+import { Chromatic, Dots } from './enums';
 import { Kin } from './Kin';
 import { Sign } from './Sign';
 

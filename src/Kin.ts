@@ -1,5 +1,5 @@
 import { isNull, isNullOrUndefined } from 'util';
-import { Chromatic, Dots } from '../src/enums';
+import { Chromatic, Dots } from './enums';
 import Oracle from './Oracle';
 import { Sign } from './Sign';
 import { Tone } from './Tone';
