@@ -20,7 +20,13 @@ npm install --save dreamspell-math
 ```js
 const { dreamdate } = require('dreamspell-math');
 
+// anything that can be parsed to moment() can be used as input
+// See https://momentjs.com/docs/#/parsing/ for details
+
 const date = dreamdate([2018, 06, 26]);
+// const date = dreamdate(new Date(1985, 7 - 1, 23));
+// const date = dreamdate(moment('1985-07-23'));
+
 var kin = date.Kin;
 ```
 

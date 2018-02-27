@@ -15,7 +15,7 @@ export class DreamDate {
   public readonly YearKin: Kin;
   public readonly Kin: Kin;
 
-  constructor(date: Date) {
+  constructor(date: any) {
     const dateMoment = moment(date);
     this.Kin = new Kin(this.GetKinFromDateTime(dateMoment.clone()));
 
@@ -62,7 +62,7 @@ export class DreamDate {
   }
 }
 
-export function dreamdate(date: Date): DreamDate {
+export function dreamdate(date: any): DreamDate {
   return new DreamDate(date);
 }
 
