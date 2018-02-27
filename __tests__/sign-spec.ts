@@ -1,4 +1,4 @@
-import {Sign} from '../src/Sign';
+import { Sign } from '../src/Sign';
 
 test('Should get a number for a constructed sign', () => {
   const sign = new Sign(1);

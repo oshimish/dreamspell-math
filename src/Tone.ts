@@ -87,6 +87,8 @@ export class Tone {
   }
 }
 
-export function tone(num : number){ return new Tone(num) }
+export function tone(num: number) {
+  return new Tone(num);
+}
 
-export default tone
+export default tone;

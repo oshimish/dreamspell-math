@@ -1,7 +1,7 @@
 ﻿import { Moment } from 'moment';
 import { Chromatic, Dots } from './enums';
-import {Kin} from './Kin';
-import {Tone} from './Tone';
+import { Kin } from './Kin';
+import { Tone } from './Tone';
 // tslint:disable-next-line:no-var-requires
 const moment = require('moment');
 
@@ -62,8 +62,8 @@ export class DreamDate {
   }
 }
 
-export function dreamdate(date : Date) : DreamDate{
+export function dreamdate(date: Date): DreamDate {
   return new DreamDate(date);
 }
 
-export default {DreamDate, dreamdate}
+export default { DreamDate, dreamdate };

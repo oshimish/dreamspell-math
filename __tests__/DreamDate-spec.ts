@@ -1,25 +1,25 @@
-import {DreamDate}from '../src/DreamDate';
+import { DreamDate } from '../src/DreamDate';
 import { Chromatic, Dots } from '../src/enums';
-import {Kin} from '../src/Kin';
-import {Sign} from '../src/Sign';
-import {Tone} from '../src/Tone';
+import { Kin } from '../src/Kin';
+import { Sign } from '../src/Sign';
+import { Tone } from '../src/Tone';
 
 test('DreamSpellDate_Kin_260', () => {
-  const cosmicSun = new DreamDate(new Date(2010, 12-1, 24));
+  const cosmicSun = new DreamDate(new Date(2010, 12 - 1, 24));
   expect(cosmicSun.Kin).toEqual(new Kin(260));
   expect(cosmicSun.Kin.Sign).toEqual(Sign.YellowSun);
   expect(cosmicSun.Kin.Tone).toEqual(Tone.Cosmic);
 });
 
 test('DreamSpellDate_Kin_1', () => {
-  const magneticDragon = new DreamDate(new Date(2010, 12-1, 25));
+  const magneticDragon = new DreamDate(new Date(2010, 12 - 1, 25));
   expect(magneticDragon.Kin).toEqual(new Kin(1));
   expect(magneticDragon.Kin.Sign).toEqual(Sign.RedDragon);
   expect(magneticDragon.Kin.Tone).toEqual(Tone.Magnetic);
 });
 
 test('DreamSpellDate_Kin_EndOfCycle', () => {
-  const resonantHand = new DreamDate(new Date(2012, 12-1, 21));
+  const resonantHand = new DreamDate(new Date(2012, 12 - 1, 21));
   expect(resonantHand.Kin).toEqual(new Kin(207));
   expect(resonantHand.Kin.Sign).toEqual(Sign.BlueHand);
   expect(resonantHand.Kin.Tone).toEqual(Tone.Crystal);

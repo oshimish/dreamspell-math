@@ -1,8 +1,8 @@
 import { isNull, isNullOrUndefined } from 'util';
 import { Chromatic, Dots } from '../src/enums';
 import Oracle from './Oracle';
-import {Sign} from './Sign';
-import {Tone} from './Tone';
+import { Sign } from './Sign';
+import { Tone } from './Tone';
 
 export class Kin {
   public static Create(sign: Sign, tone: Tone): Kin {
@@ -73,6 +73,8 @@ export class Kin {
   }
 }
 
-export function kin(num : number){ return new Kin(num) }
+export function kin(num: number) {
+  return new Kin(num);
+}
 
-export default kin
+export default kin;

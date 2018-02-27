@@ -52,6 +52,8 @@ export class Sign {
   }
 }
 
-export function sign(num : number){ return new Sign(num) };
+export function sign(num: number) {
+  return new Sign(num);
+}
 
-export default sign
+export default sign;
