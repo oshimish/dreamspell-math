@@ -113,7 +113,6 @@ test('Should get a correct kins when creating from sign and tone', () => {
   expect(new Kin(260)).toEqual(Kin.Create(Sign.YellowSun, Tone.Cosmic));
 });
 
-
 test('Should be cloned from other instance', () => {
   expect(new Kin(new Kin(3))).toEqual(new Kin(3));
 });

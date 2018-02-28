@@ -50,12 +50,13 @@ test('DreamSpellDate_1328', () => {
 
 test('Should get equal dates for dates with our withour date part', () => {
   // const date = new DreamDate(new Date(2018, 2 - 1, 28));
-  const date = new DreamDate(moment([2018, 2-1, 28]));
-  const date2 = new DreamDate(moment([2018, 2-1, 28, 23, 0, 0]));
+  const date = new DreamDate(moment([2018, 2 - 1, 28]));
+  const date2 = new DreamDate(moment([2018, 2 - 1, 28, 23, 0, 0]));
   expect(date.Kin).toEqual(date2.Kin);
 });
 
-
 test('Should be cloned from other instance', () => {
-  expect(new DreamDate(new DreamDate(moment()))).toEqual(new DreamDate(moment()));
+  expect(new DreamDate(new DreamDate(moment()))).toEqual(
+    new DreamDate(moment())
+  );
 });

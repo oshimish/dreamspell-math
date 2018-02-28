@@ -17,7 +17,7 @@ export class DreamDate {
   public readonly Moment: Moment;
 
   constructor(date: any) {
-    if(date instanceof DreamDate){
+    if (date instanceof DreamDate) {
       date = date.Moment;
     }
 

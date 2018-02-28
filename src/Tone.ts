@@ -18,7 +18,7 @@ export class Tone {
   public readonly Number: number;
 
   public constructor(num: number | Tone = 1) {
-    if(num instanceof Tone){
+    if (num instanceof Tone) {
       num = num.Number;
     }
     num = num % 13;

@@ -30,7 +30,7 @@ export class Kin {
   public readonly Chromatic: Chromatic;
 
   constructor(index: number | Kin) {
-    if(index instanceof Kin){
+    if (index instanceof Kin) {
       index = index.Index;
     }
     index = index % 260;
