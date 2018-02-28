@@ -4,6 +4,8 @@ import { Kin } from '../src/Kin';
 import { Sign } from '../src/Sign';
 import { Tone } from '../src/Tone';
 
+const moment = require('moment');
+
 test('DreamSpellDate_Kin_260', () => {
   const cosmicSun = new DreamDate(new Date(2010, 12 - 1, 24));
   expect(cosmicSun.Kin).toEqual(new Kin(260));
@@ -45,11 +47,9 @@ test('DreamSpellDate_1328', () => {
   expect(date.Week).toEqual(Chromatic.White);
 });
 
-test('DreamSpellDate_1328_21kin', () => {
-  const date = new DreamDate(new Date(2018, 2 - 1, 28));
-  expect(date.Kin).toEqual(new Kin(21));
-  expect(date.Moon).toEqual(Tone.Galactic.Number);
-  expect(date.Day).toEqual(22);
-  expect(date.DayOfWeek).toEqual(1);
-  expect(date.Week).toEqual(Chromatic.Yellow);
+test('Should get equal dates for dates with our withour date part', () => {
+  // const date = new DreamDate(new Date(2018, 2 - 1, 28));
+  const date = new DreamDate(moment([2018, 2-1, 28]));
+  const date2 = new DreamDate(moment([2018, 2-1, 28, 23, 0, 0]));
+  expect(date.Kin).toEqual(date2.Kin);
 });

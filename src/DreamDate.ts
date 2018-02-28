@@ -16,7 +16,8 @@ export class DreamDate {
   public readonly Kin: Kin;
 
   constructor(date: any) {
-    const dateMoment = moment(date);
+    let dateMoment = moment(date);
+    dateMoment = dateMoment.startOf('date');
     this.Kin = new Kin(this.GetKinFromDateTime(dateMoment.clone()));
 
     // 13-28
