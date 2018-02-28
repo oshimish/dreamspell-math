@@ -44,3 +44,12 @@ test('DreamSpellDate_1328', () => {
   expect(date.DayOfWeek).toEqual(6);
   expect(date.Week).toEqual(Chromatic.White);
 });
+
+test('DreamSpellDate_1328_21kin', () => {
+  const date = new DreamDate(new Date(2018, 2 - 1, 28));
+  expect(date.Kin).toEqual(new Kin(21));
+  expect(date.Moon).toEqual(Tone.Galactic.Number);
+  expect(date.Day).toEqual(22);
+  expect(date.DayOfWeek).toEqual(1);
+  expect(date.Week).toEqual(Chromatic.Yellow);
+});
