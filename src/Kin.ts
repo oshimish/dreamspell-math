@@ -29,7 +29,10 @@ export class Kin {
   public readonly WaveSpell: Sign;
   public readonly Chromatic: Chromatic;
 
-  constructor(index: number) {
+  constructor(index: number | Kin) {
+    if(index instanceof Kin){
+      index = index.Index;
+    }
     index = index % 260;
 
     if (index === 0) {

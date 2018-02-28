@@ -14,8 +14,13 @@ export class DreamDate {
   public readonly Day: number;
   public readonly YearKin: Kin;
   public readonly Kin: Kin;
+  public readonly Moment: Moment;
 
   constructor(date: any) {
+    if(date instanceof DreamDate){
+      date = date.Moment;
+    }
+
     let dateMoment = moment(date);
     dateMoment = dateMoment.startOf('date');
     this.Kin = new Kin(this.GetKinFromDateTime(dateMoment.clone()));
@@ -29,6 +34,7 @@ export class DreamDate {
       yearBirthday = yearBirthday.add(-1, 'year');
     }
 
+    this.Moment = dateMoment;
     this.DayOfYear = dateMoment.diff(yearBirthday, 'days');
     this.Moon = Math.floor(this.DayOfYear / 28) + 1;
     this.Day = this.DayOfYear % 28 + 1;

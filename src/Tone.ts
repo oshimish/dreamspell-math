@@ -17,7 +17,10 @@ export class Tone {
 
   public readonly Number: number;
 
-  public constructor(num: number = 1) {
+  public constructor(num: number | Tone = 1) {
+    if(num instanceof Tone){
+      num = num.Number;
+    }
     num = num % 13;
     if (num === 0) {
       num = 13;

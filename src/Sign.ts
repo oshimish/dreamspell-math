@@ -26,7 +26,10 @@ export class Sign {
 
   public readonly Number: number;
 
-  public constructor(num: number = 1) {
+  public constructor(num: number | Sign = 1) {
+    if(num instanceof Sign){
+      num = num.Number;
+    }
     num = num % 20;
     if (num === 0) {
       num = 20;

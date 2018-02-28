@@ -23,3 +23,7 @@ test('Should normilize sign numbers', () => {
 test('Should have Is() working', () => {
   expect(new Sign(21).Is(new Sign(21))).toBe(true);
 });
+
+test('Should be cloned from other instance', () => {
+  expect(new Sign(new Sign(3))).toEqual(new Sign(3));
+});
