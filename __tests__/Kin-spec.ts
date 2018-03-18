@@ -1,5 +1,5 @@
 import { Chromatic } from '../src/enums';
-import { Kin } from '../src/Kin';
+import { Kin, PortalsMatrix } from '../src/Kin';
 import { Sign } from '../src/Sign';
 import { Tone } from '../src/Tone';
 
@@ -113,6 +113,68 @@ test('Should get a correct kins when creating from sign and tone', () => {
   expect(new Kin(260)).toEqual(Kin.Create(Sign.YellowSun, Tone.Cosmic));
 });
 
-test('Should be cloned from other instance', () => {
-  expect(new Kin(new Kin(3))).toEqual(new Kin(3));
+test('Should get a correct galactic portals', () => {
+  expect(new Kin(1).IsGalacticPortal).toEqual(true);
+  expect(new Kin(2).IsGalacticPortal).toEqual(false);
+  expect(new Kin(39).IsGalacticPortal).toEqual(true);
+  expect(new Kin(40).IsGalacticPortal).toEqual(false);
+  expect(new Kin(211).IsGalacticPortal).toEqual(true);
+  expect(new Kin(259).IsGalacticPortal).toEqual(false);
+  expect(new Kin(260).IsGalacticPortal).toEqual(true);
+});
+
+test('Should get a correct ccentral rows', () => {
+
+  // for (let index = 1; index <= 260; index++) {
+  //   const element = new Kin(index);
+  //   console.log(element.Index + "[r" + element.ZolkinRow + ', c'
+  //   + element.ZolkinColumn + ']'  + ' (mi: '+ matrixIndex +') = m:'
+  //   + element.IsMysticColumn + ' g:' + element.IsGalacticPortal)
+
+  // }
+
+  expect(new Kin(1).IsMysticColumn).toEqual(false);
+  expect(new Kin(120).IsMysticColumn).toEqual(false);
+  expect(new Kin(121).IsMysticColumn).toEqual(true);
+  expect(new Kin(131).IsMysticColumn).toEqual(true);
+  expect(new Kin(139).IsMysticColumn).toEqual(true);
+  expect(new Kin(140).IsMysticColumn).toEqual(true);
+  expect(new Kin(260).IsMysticColumn).toEqual(false);
+});
+
+test('Portals matrix should contains 52 portals', () => {
+  expect(PortalsMatrix.filter((val,index) => val === 1).length).toEqual(52);
+});
+
+test('Portals matrix should contains 20 central rows', () => {
+  expect(PortalsMatrix.filter((val,index) => val === 2).length).toEqual(20);
+});
+
+test('Portals matrix should contain 260 kins', () => {
+  expect(PortalsMatrix.length).toEqual(260);
+});
+
+test('Zolkin rows should be 1 based and correct', () => {
+  expect(new Kin(1).ZolkinColumn).toEqual(1);
+  expect(new Kin(21).ZolkinColumn).toEqual(2);
+  expect(new Kin(120).ZolkinColumn).toEqual(6);
+  expect(new Kin(121).ZolkinColumn).toEqual(7);
+  expect(new Kin(140).ZolkinColumn).toEqual(7);
+  expect(new Kin(141).ZolkinColumn).toEqual(8);
+  expect(new Kin(240).ZolkinColumn).toEqual(12);
+  expect(new Kin(241).ZolkinColumn).toEqual(13);
+  expect(new Kin(260).ZolkinColumn).toEqual(13);
+});
+
+test('Zolkin rows should be 1 based and correct', () => {
+  expect(new Kin(1).ZolkinRow).toEqual(1);
+  expect(new Kin(20).ZolkinRow).toEqual(20);
+  expect(new Kin(21).ZolkinRow).toEqual(1);
+  expect(new Kin(120).ZolkinRow).toEqual(20);
+  expect(new Kin(121).ZolkinRow).toEqual(1);
+  expect(new Kin(140).ZolkinRow).toEqual(20);
+  expect(new Kin(141).ZolkinRow).toEqual(1);
+  expect(new Kin(240).ZolkinRow).toEqual(20);
+  expect(new Kin(241).ZolkinRow).toEqual(1);
+  expect(new Kin(260).ZolkinRow).toEqual(20);
 });

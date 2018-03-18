@@ -4,6 +4,29 @@ import Oracle from './Oracle';
 import { Sign } from './Sign';
 import { Tone } from './Tone';
 
+export const PortalsMatrix: number[]  = [
+  1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, // 1
+  0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0,
+  0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0,
+  0, 0, 0, 1, 0, 0, 2, 0, 0, 1, 0, 0, 0,
+  0, 0, 0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, // 7
+  0, 0, 0, 0, 1, 1, 2, 1, 1, 0, 0, 0, 0,
+  0, 0, 0, 1, 0, 1, 2, 1, 0, 1, 0, 0, 0,
+  0, 0, 1, 0, 0, 1, 2, 1, 0, 0, 1, 0, 0,
+  0, 0, 1, 0, 0, 1, 2, 1, 0, 0, 1, 0, 0,
+  0, 0, 0, 1, 0, 1, 2, 1, 0, 1, 0, 0, 0,
+  0, 0, 0, 0, 1, 1, 2, 1, 1, 0, 0, 0, 0, // 13
+  0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 0,
+  0, 0, 0, 1, 0, 0, 2, 0, 0, 1, 0, 0, 0,
+  0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0,
+  0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0,
+  1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, // 20
+];
+
 export class Kin {
   public static Create(sign: Sign, tone: Tone): Kin {
     if (isNullOrUndefined(sign)) {
@@ -25,6 +48,11 @@ export class Kin {
   public readonly Index: number;
   public readonly Sign: Sign;
   public readonly Tone: Tone;
+  public readonly IsGalacticPortal: boolean;
+  public readonly IsMysticColumn: boolean;
+  public readonly ZolkinRow: number;
+  public readonly ZolkinColumn: number;
+
 
   public readonly WaveSpell: Sign;
   public readonly Chromatic: Chromatic;
@@ -45,6 +73,23 @@ export class Kin {
 
     this.WaveSpell = this.getWaveSpell();
     this.Chromatic = this.getChromatic();
+
+    let zeroIndex = index;
+    // if (zeroIndex === 260) {
+    //   zeroIndex = 0;
+    // }
+    let row = (zeroIndex % 20);
+    if(row === 0) {row = 20};
+    let col = Math.trunc(zeroIndex / 20) ;
+    if(row !== 20) {col++};
+
+    this.ZolkinRow = row;
+    this.ZolkinColumn = col;
+
+    const matrixIndex = Math.trunc((col-1) + (row-1)*13);
+
+    this.IsGalacticPortal = PortalsMatrix[matrixIndex] === 1;
+    this.IsMysticColumn = PortalsMatrix[matrixIndex] === 2;
   }
 
   public Oracle(): Oracle {
