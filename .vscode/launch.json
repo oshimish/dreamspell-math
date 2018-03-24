@@ -8,13 +8,13 @@
       "type": "node",
       "request": "launch",
       "name": "Debug file",
-      "program": "${workspaceRoot}/lib/${fileBasenameNoExtension}.js",
-      "cwd": "${workspaceRoot}",
+      "program": "${workspaceFolder}/lib/${fileBasenameNoExtension}.js",
+      "cwd": "${workspaceFolder}",
       "sourceMaps": true,
       "smartStep": true,
       "preLaunchTask": "build",
       "outFiles": [
-        "${workspaceRoot}/lib/*.js"
+        "${workspaceFolder}/lib/*.js"
       ]
     },
     {
@@ -22,14 +22,57 @@
       "request": "launch",
       "name": "Debug test",
       "args": [
-        "--inspect-brk",
-        "${workspaceRoot}/node_modules/jest/bin/jest.js",
+        "${workspaceFolder}/node_modules/jest/bin/jest.js",
         "--runInBand",
         "--findRelatedTests",
         "${relativeFile}"
       ],
-      "cwd": "${workspaceRoot}",
-      // "console": "integratedTerminal"
+      "cwd": "${workspaceFolder}",// Use JavaScript source maps (if they exist).
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest All",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": ["--runInBand"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": [
+        "--findRelatedTests",
+        "${relativeFile}"
+      ],
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "cwd": "${workspaceFolder}",
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      //"runtimeVersion": "8.9.3",
+      "name": "Jest 2 Current File",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+      "args": [
+        "--findRelatedTests",
+        "${relativeFile}"
+      ],
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }

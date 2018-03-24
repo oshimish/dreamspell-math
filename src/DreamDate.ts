@@ -47,18 +47,22 @@ export class DreamDate {
   }
 
   private GetKinFromDateTime(dateMoment: Moment): number {
+
     let dayFix = 0;
-    while (dateMoment.year() > 2010) {
+    while (dateMoment.year() > 2018) {
       dayFix -= 365;
       dateMoment = dateMoment.add(-1, 'year');
     }
 
-    while (dateMoment.year() < 2010) {
+    while (dateMoment.year() < 2018) {
       dayFix += 365;
       dateMoment = dateMoment.add(1, 'year');
     }
 
-    let days = dateMoment.diff(moment([2010, 12 - 1, 24]), 'days') - dayFix;
+    const dragon1Day = moment([2018, 2 - 1, 8]).dayOfYear();
+    const dateDay = dateMoment.dayOfYear();
+    let days = dateDay - dragon1Day + 1;
+    days -= dayFix;
 
     while (days < 0) {
       days += 260;

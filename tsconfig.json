@@ -11,6 +11,7 @@
     "outDir": "./lib",
     "preserveConstEnums": true,
     "removeComments": true,
+    "sourceMap": true,
     "inlineSourceMap": true,
     "typeRoots": [
       "./node_modules/@types"

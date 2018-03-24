@@ -48,6 +48,27 @@ test('DreamSpellDate_1328', () => {
   expect(date.Week).toEqual(Chromatic.White);
 });
 
+test('7 KIMI - 19.9 - 2018-03-25', () => {
+  const date = new DreamDate(new Date(2018, 3 - 1, 25));
+  const date2 = new DreamDate(new Date(2018, 3 - 1, 24));
+  expect(date.Kin).toEqual(new Kin(46));
+  expect(date.Moon).toEqual(Tone.Solar.Number);
+  expect(date.Day).toEqual(19);
+  expect(date.DayOfWeek).toEqual(5);
+  expect(date.Plasma).toEqual(5);
+  expect(date.Week).toEqual(Chromatic.Blue);
+});
+
+test('3 CHUEN - 19.9 - 2027-03-25', () => {
+  const date = new DreamDate(new Date(2027, 3 - 1, 25));
+  expect(date.Kin).toEqual(new Kin(211));
+  expect(date.Moon).toEqual(Tone.Solar.Number);
+  expect(date.Day).toEqual(19);
+  expect(date.DayOfWeek).toEqual(5);
+  expect(date.Plasma).toEqual(5);
+  expect(date.Week).toEqual(Chromatic.Blue);
+});
+
 test('Should get equal dates for dates with our withour date part', () => {
   // const date = new DreamDate(new Date(2018, 2 - 1, 28));
   const date = new DreamDate(moment([2018, 2 - 1, 28]));
