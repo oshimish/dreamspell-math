@@ -1,3 +1,5 @@
+
+
 export class Sign {
   public static readonly RedDragon: Sign = new Sign(1);
   public static readonly WhiteWind: Sign = new Sign(2);
@@ -24,34 +26,78 @@ export class Sign {
   public static readonly BlueStorm: Sign = new Sign(19);
   public static readonly YellowSun: Sign = new Sign(0);
 
-  public readonly Number: number;
+  public readonly number: number;
+  public readonly name: string;
 
   public constructor(num: number | Sign = 1) {
     if (num instanceof Sign) {
-      num = num.Number;
+      num = num.number;
     }
     num = num % 20;
     if (num === 0) {
       num = 20;
     }
-    this.Number = num;
+    this.number = num;
+    this.name = this.toString();
   }
 
   public toString(): string {
-    const keys = Object.keys(this);
-    const val = Object.keys(Sign).filter(
-      key => ((Sign as any)[key] as Sign).Number === this.Number
-    );
+    switch (this.number) {
+      case 1:
+        return 'RedDragon';
+      case 2:
+        return 'WhiteWind';
+      case 3:
+        return 'BlueNight';
+      case 4:
+        return 'YellowSeed';
 
-    return val.length >= 1 ? val[0] : 'Unknown';
+      case 5:
+        return 'RedSerpent';
+      case 6:
+        return 'WhiteWorldBridger';
+      case 7:
+        return 'BlueHand';
+      case 8:
+        return 'YellowStar';
+
+      case 9:
+        return 'RedMoon';
+      case 10:
+        return 'WhiteDog';
+      case 11:
+        return 'BlueMonkey';
+      case 12:
+        return 'YellowHuman';
+
+      case 13:
+        return 'RedSkyWalker';
+      case 14:
+        return 'WhiteWizard';
+      case 15:
+        return 'BlueEagle';
+      case 16:
+        return 'YellowWarrior';
+
+      case 17:
+        return 'RedEarth';
+      case 18:
+        return 'WhiteMirror';
+      case 19:
+        return 'BlueStorm';
+      case 20:
+        return 'YellowSun';
+    }
+
+    return 'Unknown';
   }
 
-  public Normilize(): Sign {
-    return new Sign(this.Number === 0 ? 20 : this.Number);
+  public normilize(): number {
+    return this.number === 0 ? 20 : this.number;
   }
 
-  public Is(sign2: Sign): boolean {
-    return sign2.Number === this.Number;
+  public eq(sign2: Sign): boolean {
+    return sign2.number === this.number;
   }
 }
 

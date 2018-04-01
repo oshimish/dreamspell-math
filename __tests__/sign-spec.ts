@@ -2,12 +2,12 @@ import { Sign } from '../src/Sign';
 
 test('Should get a number for a constructed sign', () => {
   const sign = new Sign(1);
-  expect(sign.Number).toBe(1);
+  expect(sign.number).toBe(1);
 });
 
 test('Should get a number for a static sign', () => {
   const sign = Sign.RedDragon;
-  expect(sign.Number).toBe(1);
+  expect(sign.number).toBe(1);
 });
 
 test('Should get a nice string for a sign', () => {
@@ -17,11 +17,11 @@ test('Should get a nice string for a sign', () => {
 
 test('Should normilize sign numbers', () => {
   const sign = new Sign(21);
-  expect(sign.Number).toBe(1);
+  expect(sign.number).toBe(1);
 });
 
 test('Should have Is() working', () => {
-  expect(new Sign(21).Is(new Sign(21))).toBe(true);
+  expect(new Sign(21).eq(new Sign(21))).toBe(true);
 });
 
 test('Should be cloned from other instance', () => {

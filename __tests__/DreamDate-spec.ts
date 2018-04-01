@@ -9,71 +9,71 @@ const moment = require('moment');
 
 test('DreamSpellDate_Kin_260', () => {
   const cosmicSun = new DreamDate(new Date(2010, 12 - 1, 24));
-  expect(cosmicSun.Kin).toEqual(new Kin(260));
-  expect(cosmicSun.Kin.Sign).toEqual(Sign.YellowSun);
-  expect(cosmicSun.Kin.Tone).toEqual(Tone.Cosmic);
+  expect(cosmicSun.kin).toEqual(new Kin(260));
+  expect(cosmicSun.kin.sign).toEqual(Sign.YellowSun);
+  expect(cosmicSun.kin.tone).toEqual(Tone.Cosmic);
 });
 
 test('DreamSpellDate_Kin_1', () => {
   const magneticDragon = new DreamDate(new Date(2010, 12 - 1, 25));
-  expect(magneticDragon.Kin).toEqual(new Kin(1));
-  expect(magneticDragon.Kin.Sign).toEqual(Sign.RedDragon);
-  expect(magneticDragon.Kin.Tone).toEqual(Tone.Magnetic);
+  expect(magneticDragon.kin).toEqual(new Kin(1));
+  expect(magneticDragon.kin.sign).toEqual(Sign.RedDragon);
+  expect(magneticDragon.kin.tone).toEqual(Tone.Magnetic);
 });
 
 test('DreamSpellDate_Kin_EndOfCycle', () => {
   const resonantHand = new DreamDate(new Date(2012, 12 - 1, 21));
-  expect(resonantHand.Kin).toEqual(new Kin(207));
-  expect(resonantHand.Kin.Sign).toEqual(Sign.BlueHand);
-  expect(resonantHand.Kin.Tone).toEqual(Tone.Crystal);
+  expect(resonantHand.kin).toEqual(new Kin(207));
+  expect(resonantHand.kin.sign).toEqual(Sign.BlueHand);
+  expect(resonantHand.kin.tone).toEqual(Tone.Crystal);
 });
 
 test('DreamSpellDate_Kin_My', () => {
   const electricDragon = new DreamDate(new Date(1985, 7 - 1, 23));
-  expect(electricDragon.Kin).toEqual(new Kin(81));
-  expect(electricDragon.Kin.Sign).toEqual(Sign.RedDragon);
-  expect(electricDragon.Kin.Tone).toEqual(Tone.Electric);
-  expect(electricDragon.Moon).toEqual(Tone.Cosmic.Number);
-  expect(electricDragon.Day).toEqual(27);
-  expect(electricDragon.DayOfWeek).toEqual(6);
-  expect(electricDragon.Week).toEqual(Chromatic.Yellow);
+  expect(electricDragon.kin).toEqual(new Kin(81));
+  expect(electricDragon.kin.sign).toEqual(Sign.RedDragon);
+  expect(electricDragon.kin.tone).toEqual(Tone.Electric);
+  expect(electricDragon.moon).toEqual(Tone.Cosmic.number);
+  expect(electricDragon.day).toEqual(27);
+  expect(electricDragon.dayOfWeek).toEqual(6);
+  expect(electricDragon.week).toEqual(Chromatic.Yellow);
 });
 
 test('DreamSpellDate_1328', () => {
   const date = new DreamDate(new Date(2014, 6 - 1, 11));
-  expect(date.Kin).toEqual(new Kin(224));
-  expect(date.Moon).toEqual(Tone.Crystal.Number);
-  expect(date.Day).toEqual(13);
-  expect(date.DayOfWeek).toEqual(6);
-  expect(date.Week).toEqual(Chromatic.White);
+  expect(date.kin).toEqual(new Kin(224));
+  expect(date.moon).toEqual(Tone.Crystal.number);
+  expect(date.day).toEqual(13);
+  expect(date.dayOfWeek).toEqual(6);
+  expect(date.week).toEqual(Chromatic.White);
 });
 
 test('7 KIMI - 19.9 - 2018-03-25', () => {
   const date = new DreamDate(new Date(2018, 3 - 1, 25));
   const date2 = new DreamDate(new Date(2018, 3 - 1, 24));
-  expect(date.Kin).toEqual(new Kin(46));
-  expect(date.Moon).toEqual(Tone.Solar.Number);
-  expect(date.Day).toEqual(19);
-  expect(date.DayOfWeek).toEqual(5);
-  expect(date.Plasma).toEqual(5);
-  expect(date.Week).toEqual(Chromatic.Blue);
+  expect(date.kin).toEqual(new Kin(46));
+  expect(date.moon).toEqual(Tone.Solar.number);
+  expect(date.day).toEqual(19);
+  expect(date.dayOfWeek).toEqual(5);
+  expect(date.plasma).toEqual(5);
+  expect(date.week).toEqual(Chromatic.Blue);
 });
 
 test('3 CHUEN - 19.9 - 2027-03-25', () => {
   const date = new DreamDate(new Date(2027, 3 - 1, 25));
-  expect(date.Kin).toEqual(new Kin(211));
-  expect(date.Moon).toEqual(Tone.Solar.Number);
-  expect(date.Day).toEqual(19);
-  expect(date.DayOfWeek).toEqual(5);
-  expect(date.Plasma).toEqual(5);
-  expect(date.Week).toEqual(Chromatic.Blue);
+  expect(date.kin).toEqual(new Kin(211));
+  expect(date.moon).toEqual(Tone.Solar.number);
+  expect(date.day).toEqual(19);
+  expect(date.dayOfWeek).toEqual(5);
+  expect(date.plasma).toEqual(5);
+  expect(date.week).toEqual(Chromatic.Blue);
 });
 
 test('Should get equal dates for dates with our withour date part', () => {
   // const date = new DreamDate(new Date(2018, 2 - 1, 28));
   const date = new DreamDate(moment([2018, 2 - 1, 28]));
   const date2 = new DreamDate(moment([2018, 2 - 1, 28, 23, 0, 0]));
-  expect(date.Kin).toEqual(date2.Kin);
+  expect(date.kin).toEqual(date2.kin);
 });
 
 test('Should be cloned from other instance', () => {

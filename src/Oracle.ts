@@ -3,33 +3,33 @@ import { Kin } from './Kin';
 import { Sign } from './Sign';
 
 export default class Oracle {
-  public readonly Kin: Kin;
+  public readonly kin: Kin;
 
-  public readonly Analog: Kin;
-  public readonly Driver: Kin;
-  public readonly Antipod: Kin;
-  public readonly Occult: Kin;
+  public readonly analog: Kin;
+  public readonly driver: Kin;
+  public readonly antipod: Kin;
+  public readonly occult: Kin;
 
   constructor(kin: Kin) {
-    this.Kin = kin;
+    this.kin = kin;
 
-    this.Analog = this.getAnalog();
-    this.Driver = this.getDriver();
-    this.Antipod = this.getAntipod();
-    this.Occult = this.getOccult();
+    this.analog = this.getAnalog();
+    this.driver = this.getDriver();
+    this.antipod = this.getAntipod();
+    this.occult = this.getOccult();
   }
 
   private getAnalog(): Kin {
-    return Kin.Create(
-      new Sign((19 - this.Kin.Sign.Normilize().Number + 2 * 20) % 20),
-      this.Kin.Tone
+    return Kin.create(
+      new Sign((19 - this.kin.sign.normilize() + 2 * 20) % 20),
+      this.kin.tone
     );
   }
 
   private getDriver(): Kin {
-    let sign = this.Kin.Sign.Normilize().Number;
+    let sign = this.kin.sign.normilize();
 
-    switch (this.Kin.Tone.Notation()) {
+    switch (this.kin.tone.dots()) {
       case Dots.Line:
         sign += 8;
         break;
@@ -49,14 +49,14 @@ export default class Oracle {
 
     sign = (sign + 2 * 20) % 20;
 
-    return Kin.Create(new Sign(sign), this.Kin.Tone);
+    return Kin.create(new Sign(sign), this.kin.tone);
   }
 
   private getAntipod(): Kin {
-    return new Kin(260 / 2 + this.Kin.Index);
+    return new Kin(260 / 2 + this.kin.number);
   }
 
   private getOccult(): Kin {
-    return new Kin(1 - this.Kin.Index + 2 * 260);
+    return new Kin(1 - this.kin.number + 2 * 260);
   }
 }

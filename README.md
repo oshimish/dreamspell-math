@@ -31,13 +31,13 @@ var kin = date.Kin;
 ```
 
 ```js
-const kin = require('dreamspell-math').kin;
+const { kin } = require('dreamspell-math');
 
 const kin1 = kin(1);
 ```
 
 ```js
-const { kin, sign, tone } = require('dreamspell-math');
+const * as g = require('dreamspell-math');
 
-const kin260 = kin(tone(13), sign(20));
+const kin260 = g.kin(g.tone(13), g.sign(20));
 ```

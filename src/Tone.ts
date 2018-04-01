@@ -15,21 +15,23 @@ export class Tone {
   public static readonly Crystal: Tone = new Tone(12);
   public static readonly Cosmic: Tone = new Tone(13);
 
-  public readonly Number: number;
+  public readonly number: number;
+  public readonly name: string;
 
   public constructor(num: number | Tone = 1) {
     if (num instanceof Tone) {
-      num = num.Number;
+      num = num.number;
     }
     num = num % 13;
     if (num === 0) {
       num = 13;
     }
-    this.Number = num;
+    this.number = num;
+    this.name = this.toString();
   }
 
   public toString(): string {
-    switch (this.Number) {
+    switch (this.number) {
       case 1:
         return 'Magnetic';
       case 2:
@@ -61,16 +63,16 @@ export class Tone {
     return 'Unknown';
   }
 
-  public Normilize(): Tone {
-    return new Tone(this.Number === 0 ? 13 : this.Number);
+  public normilize(): number {
+    return this.number === 0 ? 13 : this.number;
   }
 
-  public Is(other: Tone): boolean {
-    return this.Number === other.Number;
+  public eq(other: Tone): boolean {
+    return this.number === other.number;
   }
 
-  public Notation(): Dots {
-    const dots = this.Number % 5;
+  public dots(): Dots {
+    const dots = this.number % 5;
     switch (dots) {
       case 1:
         return Dots.OneDot;

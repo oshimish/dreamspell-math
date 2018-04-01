@@ -4,7 +4,7 @@ import Oracle from './Oracle';
 import { Sign } from './Sign';
 import { Tone } from './Tone';
 
-export const PortalsMatrix: number[]  = [
+export const PORTALS_MATRIX: number[]  = [
   1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, // 1
   0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0,
   0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0,
@@ -28,7 +28,7 @@ export const PortalsMatrix: number[]  = [
 ];
 
 export class Kin {
-  public static Create(sign: Sign, tone: Tone): Kin {
+  public static create(sign: Sign, tone: Tone): Kin {
     if (isNullOrUndefined(sign)) {
       throw new Error('sign is null or underfined');
     }
@@ -37,29 +37,29 @@ export class Kin {
       throw new Error('tone is null or underfined');
     }
 
-    let i = tone.Normilize().Number;
-    while (!sign.Is(new Kin(i).Sign)) {
+    let i = tone.normilize();
+    while (!sign.eq(new Kin(i).sign)) {
       i += 13;
     }
 
     return new Kin(i);
   }
 
-  public readonly Index: number;
-  public readonly Sign: Sign;
-  public readonly Tone: Tone;
-  public readonly IsGalacticPortal: boolean;
-  public readonly IsMysticColumn: boolean;
-  public readonly ZolkinRow: number;
-  public readonly ZolkinColumn: number;
+  public readonly number: number;
+  public readonly sign: Sign;
+  public readonly tone: Tone;
+  public readonly isGalacticPortal: boolean;
+  public readonly isMysticColumn: boolean;
+  public readonly zolkinRow: number;
+  public readonly zolkinColumn: number;
 
 
-  public readonly WaveSpell: Sign;
-  public readonly Chromatic: Chromatic;
+  public readonly waveSpell: Sign;
+  public readonly chromatic: Chromatic;
 
   constructor(index: number | Kin) {
     if (index instanceof Kin) {
-      index = index.Index;
+      index = index.number;
     }
     index = index % 260;
 
@@ -67,32 +67,28 @@ export class Kin {
       index = 260;
     }
 
-    this.Index = index;
-    this.Tone = new Tone(this.Index % 13);
-    this.Sign = new Sign(this.Index % 20);
+    this.number = index;
+    this.tone = new Tone(this.number % 13);
+    this.sign = new Sign(this.number % 20);
 
-    this.WaveSpell = this.getWaveSpell();
-    this.Chromatic = this.getChromatic();
+    this.waveSpell = this.getWaveSpell();
+    this.chromatic = this.getChromatic();
 
-    let zeroIndex = index;
-    // if (zeroIndex === 260) {
-    //   zeroIndex = 0;
-    // }
-    let row = (zeroIndex % 20);
+    let row = (index % 20);
     if(row === 0) {row = 20};
-    let col = Math.trunc(zeroIndex / 20) ;
+    let col = Math.trunc(index / 20) ;
     if(row !== 20) {col++};
 
-    this.ZolkinRow = row;
-    this.ZolkinColumn = col;
+    this.zolkinRow = row;
+    this.zolkinColumn = col;
 
     const matrixIndex = Math.trunc((col-1) + (row-1)*13);
 
-    this.IsGalacticPortal = PortalsMatrix[matrixIndex] === 1;
-    this.IsMysticColumn = PortalsMatrix[matrixIndex] === 2;
+    this.isGalacticPortal = PORTALS_MATRIX[matrixIndex] === 1;
+    this.isMysticColumn = PORTALS_MATRIX[matrixIndex] === 2;
   }
 
-  public Oracle(): Oracle {
+  public getOracle(): Oracle {
     return new Oracle(this);
   }
 
@@ -104,19 +100,19 @@ export class Kin {
   //   return new Kin(0);
   // }
 
-  public Is(kin2: Kin): boolean {
-    return kin2.Index === this.Index;
+  public eq(kin2: Kin): boolean {
+    return kin2.number === this.number;
   }
 
   private getChromatic(): Chromatic {
-    let ind = this.Index % 4;
+    let ind = this.number % 4;
     ind = ind === 0 ? 4 : ind;
     return ind as Chromatic;
   }
 
   private getWaveSpell(): Sign {
     return new Sign(
-      (this.Sign.Number - (this.Tone.Normilize().Number - 1) + 2 * 20) % 20
+      (this.sign.number - (this.tone.normilize() - 1) + 2 * 20) % 20
     );
   }
 }
