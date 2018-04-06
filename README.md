@@ -27,13 +27,15 @@ const date = dreamdate([2018, 06, 26]);
 // const date = dreamdate(new Date(1985, 7 - 1, 23));
 // const date = dreamdate(moment('1985-07-23'));
 
-var kin = date.Kin;
+var kin = date.kin;
 ```
 
 ```js
 const { kin } = require('dreamspell-math');
 
 const kin1 = kin(1);
+const tone1 = kin1.tone;
+const sign1 = kin1.sign
 ```
 
 ```js
