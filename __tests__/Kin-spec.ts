@@ -1,4 +1,4 @@
-import { Chromatic } from '../src/enums';
+import { Colors } from '../src/enums';
 import { Kin, PORTALS_MATRIX } from '../src/Kin';
 import { Sign } from '../src/Sign';
 import { Tone } from '../src/Tone';
@@ -7,12 +7,12 @@ test('Should get a correct signs and tones for the specific kins', () => {
   const kin81 = new Kin(81);
   expect(kin81.sign).toEqual(Sign.RedDragon);
   expect(kin81.tone).toEqual(Tone.Electric);
-  expect(kin81.chromatic).toEqual(Chromatic.Red);
+  expect(kin81.color).toEqual(Colors.Red);
 
   const kin1 = new Kin(1);
   expect(kin1.sign).toEqual(Sign.RedDragon);
   expect(kin1.tone).toEqual(Tone.Magnetic);
-  expect(kin1.chromatic).toEqual(Chromatic.Red);
+  expect(kin1.color).toEqual(Colors.Red);
 
   const kin260 = new Kin(260);
   const kin0 = new Kin(0);
@@ -20,7 +20,7 @@ test('Should get a correct signs and tones for the specific kins', () => {
   expect(kin260.tone).toEqual(kin0.tone);
   expect(kin260.sign).toEqual(Sign.YellowSun);
   expect(kin260.tone).toEqual(Tone.Cosmic);
-  expect(kin260.chromatic).toEqual(Chromatic.Yellow);
+  expect(kin260.color).toEqual(Colors.Yellow);
 
   const tone = new Tone(1);
   expect(tone.number).toEqual(1);
@@ -90,19 +90,19 @@ test('Should get a correct occults for the specific kins', () => {
   expect(new Kin(130)).toEqual(new Kin(131).getOracle().occult);
 });
 
-test('Should get a correct chromatics for the specific kins', () => {
-  expect(new Kin(1).chromatic).toEqual(Chromatic.Red);
-  expect(new Kin(2).chromatic).toEqual(Chromatic.White);
-  expect(new Kin(3).chromatic).toEqual(Chromatic.Blue);
-  expect(new Kin(4).chromatic).toEqual(Chromatic.Yellow);
-  expect(new Kin(5).chromatic).toEqual(Chromatic.Red);
+test('Should get a correct Colorss for the specific kins', () => {
+  expect(new Kin(1).color).toEqual(Colors.Red);
+  expect(new Kin(2).color).toEqual(Colors.White);
+  expect(new Kin(3).color).toEqual(Colors.Blue);
+  expect(new Kin(4).color).toEqual(Colors.Yellow);
+  expect(new Kin(5).color).toEqual(Colors.Red);
 
-  expect(new Kin(257).chromatic).toEqual(Chromatic.Red);
-  expect(new Kin(258).chromatic).toEqual(Chromatic.White);
-  expect(new Kin(259).chromatic).toEqual(Chromatic.Blue);
-  expect(new Kin(260).chromatic).toEqual(Chromatic.Yellow);
+  expect(new Kin(257).color).toEqual(Colors.Red);
+  expect(new Kin(258).color).toEqual(Colors.White);
+  expect(new Kin(259).color).toEqual(Colors.Blue);
+  expect(new Kin(260).color).toEqual(Colors.Yellow);
 
-  expect(new Kin(0).chromatic).toEqual(Chromatic.Yellow);
+  expect(new Kin(0).color).toEqual(Colors.Yellow);
 });
 
 test('Should get a correct kins when creating from sign and tone', () => {
@@ -177,4 +177,12 @@ test('Zolkin rows should be 1 based and correct', () => {
   expect(new Kin(240).zolkinRow).toEqual(20);
   expect(new Kin(241).zolkinRow).toEqual(1);
   expect(new Kin(260).zolkinRow).toEqual(20);
+});
+
+test('Kin 1 should have name', () => {
+  expect(new Kin(1).name).toBe('Magnetic RedDragon');
+});
+
+test('Kin 260 should have name', () => {
+  expect(new Kin(260).name).toBe('Cosmic YellowSun');
 });

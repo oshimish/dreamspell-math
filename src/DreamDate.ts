@@ -1,5 +1,5 @@
 ﻿import { Moment } from 'moment';
-import { Chromatic, Dots } from './enums';
+import { Colors, Dots } from './enums';
 import { Kin } from './Kin';
 import { Tone } from './Tone';
 // tslint:disable-next-line:no-var-requires
@@ -34,7 +34,7 @@ const getKinForDate = (dateMoment: Moment): Kin => {
 export class DreamDate {
   public readonly dayOfYear: number;
   public readonly moon: number;
-  public readonly week: Chromatic;
+  public readonly week: Colors;
   public readonly plasma: number;
   public readonly dayOfWeek: number;
   public readonly day: number;

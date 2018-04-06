@@ -38,10 +38,22 @@ export class Sign {
       num = 20;
     }
     this.number = num;
-    this.name = this.toString();
+    this.name = this.getName();
   }
 
   public toString(): string {
+    return this.name;
+  }
+
+  public normilize(): number {
+    return this.number === 0 ? 20 : this.number;
+  }
+
+  public eq(sign2: Sign): boolean {
+    return sign2.number === this.number;
+  }
+
+  private getName(): string {
     switch (this.number) {
       case 1:
         return 'RedDragon';
@@ -90,14 +102,6 @@ export class Sign {
     }
 
     return 'Unknown';
-  }
-
-  public normilize(): number {
-    return this.number === 0 ? 20 : this.number;
-  }
-
-  public eq(sign2: Sign): boolean {
-    return sign2.number === this.number;
   }
 }
 

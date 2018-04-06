@@ -1,5 +1,5 @@
 import { isNull, isNullOrUndefined } from 'util';
-import { Chromatic, Dots } from './enums';
+import { Colors, Dots } from './enums';
 import Oracle from './Oracle';
 import { Sign } from './Sign';
 import { Tone } from './Tone';
@@ -46,6 +46,7 @@ export class Kin {
   }
 
   public readonly number: number;
+  public readonly name: string;
   public readonly sign: Sign;
   public readonly tone: Tone;
   public readonly isGalacticPortal: boolean;
@@ -55,7 +56,7 @@ export class Kin {
 
 
   public readonly waveSpell: Sign;
-  public readonly chromatic: Chromatic;
+  public readonly color: Colors;
 
   constructor(index: number | Kin) {
     if (index instanceof Kin) {
@@ -72,7 +73,7 @@ export class Kin {
     this.sign = new Sign(this.number % 20);
 
     this.waveSpell = this.getWaveSpell();
-    this.chromatic = this.getChromatic();
+    this.color = this.getColor();
 
     let row = (index % 20);
     if(row === 0) {row = 20};
@@ -86,6 +87,8 @@ export class Kin {
 
     this.isGalacticPortal = PORTALS_MATRIX[matrixIndex] === 1;
     this.isMysticColumn = PORTALS_MATRIX[matrixIndex] === 2;
+
+    this.name = this.getName();
   }
 
   public getOracle(): Oracle {
@@ -104,10 +107,18 @@ export class Kin {
     return kin2.number === this.number;
   }
 
-  private getChromatic(): Chromatic {
+  public toString(): string {
+    return this.name;
+  }
+
+  private getName(): string {
+    return `${this.tone} ${this.sign}`;
+  }
+
+  private getColor(): Colors {
     let ind = this.number % 4;
     ind = ind === 0 ? 4 : ind;
-    return ind as Chromatic;
+    return ind as Colors;
   }
 
   private getWaveSpell(): Sign {

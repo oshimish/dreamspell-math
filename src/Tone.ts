@@ -27,10 +27,43 @@ export class Tone {
       num = 13;
     }
     this.number = num;
-    this.name = this.toString();
+    this.name = this.getName();
   }
 
+
   public toString(): string {
+    return this.name;
+  }
+
+  public normilize(): number {
+    return this.number === 0 ? 13 : this.number;
+  }
+
+  public eq(other: Tone): boolean {
+    return this.number === other.number;
+  }
+
+  public dots(): Dots {
+    const dots = this.number % 5;
+    switch (dots) {
+      case 1:
+        return Dots.OneDot;
+      case 2:
+        return Dots.TwoDots;
+      case 3:
+        return Dots.ThreeDots;
+      case 4:
+        return Dots.FourDots;
+      case 0:
+        return Dots.Line;
+
+      default:
+        break;
+    }
+    throw new Error();
+  }
+
+  private getName(): string {
     switch (this.number) {
       case 1:
         return 'Magnetic';
@@ -61,34 +94,6 @@ export class Tone {
     }
 
     return 'Unknown';
-  }
-
-  public normilize(): number {
-    return this.number === 0 ? 13 : this.number;
-  }
-
-  public eq(other: Tone): boolean {
-    return this.number === other.number;
-  }
-
-  public dots(): Dots {
-    const dots = this.number % 5;
-    switch (dots) {
-      case 1:
-        return Dots.OneDot;
-      case 2:
-        return Dots.TwoDots;
-      case 3:
-        return Dots.ThreeDots;
-      case 4:
-        return Dots.FourDots;
-      case 0:
-        return Dots.Line;
-
-      default:
-        break;
-    }
-    throw new Error();
   }
 }
 

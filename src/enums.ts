@@ -1,4 +1,4 @@
-export enum Chromatic {
+export enum Colors {
   Red = 1,
   White = 2,
   Blue = 3,

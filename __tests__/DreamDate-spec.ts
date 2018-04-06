@@ -1,5 +1,5 @@
 import { DreamDate } from '../src/DreamDate';
-import { Chromatic, Dots } from '../src/enums';
+import { Colors, Dots } from '../src/enums';
 import { Kin } from '../src/Kin';
 import { Sign } from '../src/Sign';
 import { Tone } from '../src/Tone';
@@ -36,7 +36,7 @@ test('DreamSpellDate_Kin_My', () => {
   expect(electricDragon.moon).toEqual(Tone.Cosmic.number);
   expect(electricDragon.day).toEqual(27);
   expect(electricDragon.dayOfWeek).toEqual(6);
-  expect(electricDragon.week).toEqual(Chromatic.Yellow);
+  expect(electricDragon.week).toEqual(Colors.Yellow);
 });
 
 test('DreamSpellDate_1328', () => {
@@ -45,7 +45,7 @@ test('DreamSpellDate_1328', () => {
   expect(date.moon).toEqual(Tone.Crystal.number);
   expect(date.day).toEqual(13);
   expect(date.dayOfWeek).toEqual(6);
-  expect(date.week).toEqual(Chromatic.White);
+  expect(date.week).toEqual(Colors.White);
 });
 
 test('7 KIMI - 19.9 - 2018-03-25', () => {
@@ -56,7 +56,7 @@ test('7 KIMI - 19.9 - 2018-03-25', () => {
   expect(date.day).toEqual(19);
   expect(date.dayOfWeek).toEqual(5);
   expect(date.plasma).toEqual(5);
-  expect(date.week).toEqual(Chromatic.Blue);
+  expect(date.week).toEqual(Colors.Blue);
 });
 
 test('3 CHUEN - 19.9 - 2027-03-25', () => {
@@ -66,7 +66,7 @@ test('3 CHUEN - 19.9 - 2027-03-25', () => {
   expect(date.day).toEqual(19);
   expect(date.dayOfWeek).toEqual(5);
   expect(date.plasma).toEqual(5);
-  expect(date.week).toEqual(Chromatic.Blue);
+  expect(date.week).toEqual(Colors.Blue);
 });
 
 test('Should get equal dates for dates with our withour date part', () => {
