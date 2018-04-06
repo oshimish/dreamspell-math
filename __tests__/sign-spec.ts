@@ -27,3 +27,12 @@ test('Should have Is() working', () => {
 test('Should be cloned from other instance', () => {
   expect(new Sign(new Sign(3))).toEqual(new Sign(3));
 });
+
+
+test('Sign 1 should have name', () => {
+  expect(new Sign(1).name).toBe('RedDragon');
+});
+
+test('Sign 20 should have name', () => {
+  expect(new Sign(20).name).toBe('YellowSun');
+});

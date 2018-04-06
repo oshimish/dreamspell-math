@@ -20,3 +20,13 @@ test('Tone should be cloned from other tone', () => {
   const tone2 = new Tone(tone);
   expect(tone.number).toBe(tone.number);
 });
+
+test('Tone 1 should have name', () => {
+  const tone = new Tone(1);
+  expect(tone.name).toBe('Magnetic');
+});
+
+test('Tone 13 should have name', () => {
+  const tone = new Tone(13);
+  expect(tone.name).toBe('Cosmic');
+});
