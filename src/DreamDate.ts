@@ -3,10 +3,10 @@ import { Colors, Dots } from './enums';
 import { Kin } from './Kin';
 import { Tone } from './Tone';
 // tslint:disable-next-line:no-var-requires
-const moment = require('moment');
+const moment: (a1?: any, a2?: any, a3?: any) => Moment = require('moment');
 
 const getKinForDate = (dateMoment: Moment): Kin => {
-  dateMoment = dateMoment.clone()
+  dateMoment = dateMoment.clone();
   let dayFix = 0;
   while (dateMoment.year() > 2018) {
     dayFix -= 365;
@@ -28,8 +28,8 @@ const getKinForDate = (dateMoment: Moment): Kin => {
   }
 
   const kin: number = days % 260;
-  return new Kin(kin)
-}
+  return new Kin(kin);
+};
 
 export class DreamDate {
   public readonly dayOfYear: number;
@@ -61,8 +61,14 @@ export class DreamDate {
 
     this.moment = dateMoment;
     this.dayOfYear = dateMoment.diff(yearBirthday, 'days');
+
+    // check for leap years
+    if (dateMoment.isLeapYear() && this.dayOfYear >= 218) {
+      this.dayOfYear--;
+    }
+
     this.moon = Math.floor(this.dayOfYear / 28) + 1;
-    this.day = this.dayOfYear % 28 + 1;
+    this.day = (this.dayOfYear % 28) + 1;
     // Day = Day == 0 ? 28 : Day;
     this.yearKin = getKinForDate(yearBirthday);
     this.dayOfWeek = this.day % 7;
@@ -70,7 +76,6 @@ export class DreamDate {
     this.plasma = this.dayOfWeek;
     this.week = Math.floor((this.day - 1) / 7) + 1;
   }
-
 }
 
 export function dreamdate(date: any): DreamDate {

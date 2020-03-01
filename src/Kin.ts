@@ -4,7 +4,7 @@ import Oracle from './Oracle';
 import { Sign } from './Sign';
 import { Tone } from './Tone';
 
-export const PORTALS_MATRIX: number[]  = [
+export const PORTALS_MATRIX: number[]  = [ //
   1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, // 1
   0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0,
   0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0,
@@ -54,7 +54,6 @@ export class Kin {
   public readonly zolkinRow: number;
   public readonly zolkinColumn: number;
 
-
   public readonly waveSpell: Sign;
   public readonly color: Colors;
 
@@ -75,15 +74,19 @@ export class Kin {
     this.waveSpell = this.getWaveSpell();
     this.color = this.getColor();
 
-    let row = (index % 20);
-    if(row === 0) {row = 20};
-    let col = Math.trunc(index / 20) ;
-    if(row !== 20) {col++};
+    let row = index % 20;
+    if (row === 0) {
+      row = 20;
+    }
+    let col = Math.trunc(index / 20);
+    if (row !== 20) {
+      col++;
+    }
 
     this.zolkinRow = row;
     this.zolkinColumn = col;
 
-    const matrixIndex = Math.trunc((col-1) + (row-1)*13);
+    const matrixIndex = Math.trunc(col - 1 + (row - 1) * 13);
 
     this.isGalacticPortal = PORTALS_MATRIX[matrixIndex] === 1;
     this.isMysticColumn = PORTALS_MATRIX[matrixIndex] === 2;
