@@ -15,6 +15,9 @@ export class Tone {
   public static readonly Crystal: Tone = new Tone(12);
   public static readonly Cosmic: Tone = new Tone(13);
 
+  /**
+   * Tone number in format [0-12]
+   */
   public readonly number: number;
   public readonly name: string;
 
@@ -35,6 +38,9 @@ export class Tone {
     return this.name;
   }
 
+  /**
+   * Get tone number in format [1-13]
+   */
   public normilize(): number {
     return this.number === 0 ? 13 : this.number;
   }

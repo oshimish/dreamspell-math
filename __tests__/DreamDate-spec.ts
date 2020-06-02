@@ -12,6 +12,8 @@ test('DreamSpellDate_Kin_260', () => {
   expect(cosmicSun.kin).toEqual(new Kin(260));
   expect(cosmicSun.kin.sign).toEqual(Sign.YellowSun);
   expect(cosmicSun.kin.tone).toEqual(Tone.Cosmic);
+
+  expect(cosmicSun.getWavespellStart().kin.sign).toEqual(Sign.YellowStar);
 });
 
 test('DreamSpellDate_Kin_1', () => {
@@ -19,6 +21,8 @@ test('DreamSpellDate_Kin_1', () => {
   expect(magneticDragon.kin).toEqual(new Kin(1));
   expect(magneticDragon.kin.sign).toEqual(Sign.RedDragon);
   expect(magneticDragon.kin.tone).toEqual(Tone.Magnetic);
+
+  expect(magneticDragon.getWavespellStart().kin.sign).toEqual(Sign.RedDragon);
 });
 
 test('DreamSpellDate_Kin_EndOfCycle', () => {
@@ -37,6 +41,8 @@ test('DreamSpellDate_Kin_My', () => {
   expect(electricDragon.day).toEqual(27);
   expect(electricDragon.dayOfWeek).toEqual(6);
   expect(electricDragon.week).toEqual(Colors.Yellow);
+
+  expect(electricDragon.getWavespellStart().kin.sign).toEqual(Sign.BlueStorm);
 });
 
 test('DreamSpellDate_1328', () => {
@@ -68,6 +74,32 @@ test('3 CHUEN - 19.9 - 2027-03-25', () => {
   expect(date.plasma).toEqual(5);
   expect(date.week).toEqual(Colors.Blue);
 });
+
+describe("moon placement bug", () => {
+  test('3 WIND - 01.2 - 2019-08-23 -- 1 Dali moon placement bug', () => {
+    const date = new DreamDate(new Date(2019, 8 - 1, 23));
+    expect(date.kin).toEqual(new Kin(42));
+    expect(date.moon).toEqual(Tone.Lunar.number);
+    expect(date.day).toEqual(1);
+    expect(date.dayOfWeek).toEqual(1);
+    expect(date.plasma).toEqual(1);
+    expect(date.week).toEqual(Colors.Red);
+
+    expect(date.getWavespellStart().kin.sign).toEqual(Sign.YellowSun);
+  });
+
+  test('2 DRAGON - 28.1 - 2019-08-22 -- 28 Silio moon placement bug', () => {
+    const date = new DreamDate(new Date(2019, 8 - 1, 22));
+    expect(date.kin).toEqual(new Kin(41));
+    expect(date.moon).toEqual(Tone.Magnetic.number);
+    expect(date.day).toEqual(28);
+    expect(date.dayOfWeek).toEqual(7);
+    expect(date.plasma).toEqual(7);
+    expect(date.week).toEqual(Colors.Yellow);
+
+    expect(date.getWavespellStart().kin.sign).toEqual(Sign.YellowSun);
+  });
+})
 
 test('10 CHUEN - 29.2 - 2020-02-29 Leap Days - Monkey Trick', () => {
   const date28 = new DreamDate(new Date(2020, 2 - 1, 28));
