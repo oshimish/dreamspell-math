@@ -76,6 +76,12 @@ export class DreamDate {
     this.plasma = this.dayOfWeek;
     this.week = Math.floor((this.day - 1) / 7) + 1;
   }
+
+  getWavespellStart() {
+    return dreamdate(
+      this.moment.clone().add(-this.kin.tone.number + 1, "d")
+    );
+  }
 }
 
 export function dreamdate(date: any): DreamDate {

@@ -1,4 +1,3 @@
-import { isNull, isNullOrUndefined } from 'util';
 import { Colors, Dots } from './enums';
 import Oracle from './Oracle';
 import { Sign } from './Sign';
@@ -29,11 +28,11 @@ export const PORTALS_MATRIX: number[]  = [ //
 
 export class Kin {
   public static create(sign: Sign, tone: Tone): Kin {
-    if (isNullOrUndefined(sign)) {
+    if (sign == null) {
       throw new Error('sign is null or underfined');
     }
 
-    if (isNullOrUndefined(tone)) {
+    if (tone == null) {
       throw new Error('tone is null or underfined');
     }
 

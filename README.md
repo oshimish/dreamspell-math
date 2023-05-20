@@ -1,45 +1,79 @@
-[![Build Status](https://travis-ci.org/oshimish/dreamspell-math.svg?branch=master)](https://travis-ci.org/oshimish/dreamspell-math)
-[![Coverage Status](https://coveralls.io/repos/github/oshimish/dreamspell-math/badge.svg?branch=master)](https://coveralls.io/github/oshimish/dreamspell-math?branch=master)
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-
 # dreamspell-math
 
-A JavaScript library with DreamSpell date, Zolkin & extras calculations. 
+A JavaScript library with DreamSpell date, Zolkin & extras calculations.
 
-Details: http://www.lawoftime.org/lawoftime.html
+Details: [Law of Time](http://www.lawoftime.org/lawoftime.html)
 
-## Installing
-For the latest stable version:
+[![npm version](https://badge.fury.io/js/%40oshimish%2Fdreamspell-math.svg)](https://www.npmjs.com/package/@oshimish/dreamspell-math)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-```
-npm install --save dreamspell-math
+## Notice
+
+The previous version of the package, `dreamspell-math` [![npm version](https://badge.fury.io/js/dreamspell-math.svg)](https://www.npmjs.com/package/dreamspell-math), is now obsolete and no longer maintained.
+
+Please switch to using `@oshimish/dreamspell-math` to ensure you have the latest updates, improvements, and bug fixes. 
+
+## Installation
+
+You can install the new version of the package from npm using the following command:
+
+```bash
+npm install @oshimish/dreamspell-math
 ```
 
 ## Usage
 
+### In Node.js (CommonJS)
+
 ```js
-const { dreamdate } = require('dreamspell-math');
+const { dreamdate } = require('@oshimish/dreamspell-math');
 
 // anything that can be parsed to moment() can be used as input
 // See https://momentjs.com/docs/#/parsing/ for details
 
 const date = dreamdate([2018, 06, 26]);
-// const date = dreamdate(new Date(1985, 7 - 1, 23));
-// const date = dreamdate(moment('1985-07-23'));
+const date2 = dreamdate(new Date(1985, 7 - 1, 23));
+const date3 = dreamdate(moment('1985-07-23'));
 
 var kin = date.kin;
 ```
 
+### In TypeScript (ESM)
+
+First, you need to import the module:
+
+```ts
+import * as g from '@oshimish/dreamspell-math';
+```
+
+Then you can use it in the same way:
+
+```ts
+const date = g.dreamdate([2018, 06, 26]);
+```
+
+## Examples
+
 ```js
-const { kin } = require('dreamspell-math');
+const { kin } = require('@oshimish/dreamspell-math');
 
 const kin1 = kin(1);
 const tone1 = kin1.tone;
 const sign1 = kin1.sign
 ```
 
-```js
-const * as g = require('dreamspell-math');
+```ts
+import * as g from '@oshimish/dreamspell-math';
 
 const kin260 = g.kin(g.tone(13), g.sign(20));
 ```
+
+## Reporting Bugs
+
+Please report bugs on our Github repository.
+
+<https://github.com/oshimish/dreamspell-math/issues>
+
+## License
+
+MIT
