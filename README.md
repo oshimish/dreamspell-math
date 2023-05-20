@@ -1,10 +1,8 @@
-[![Build Status](https://travis-ci.org/oshimish/dreamspell-math.svg?branch=master)](https://travis-ci.org/oshimish/dreamspell-math)
-[![Coverage Status](https://coveralls.io/repos/github/oshimish/dreamspell-math/badge.svg?branch=master)](https://coveralls.io/github/oshimish/dreamspell-math?branch=master)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 # dreamspell-math
 
-A JavaScript library with DreamSpell date, Zolkin & extras calculations. 
+A JavaScript library with DreamSpell date, Zolkin & extras calculations.
 
 Details: http://www.lawoftime.org/lawoftime.html
 
