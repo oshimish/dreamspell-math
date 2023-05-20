@@ -1,8 +1,9 @@
 {
-  "name": "@oshimish/dreamspell-math",
+  "name": "@oshimishi/dreamspell-math",
   "version": "0.3.0",
   "description": "dreamspell-math",
   "license": "MIT",
+  "private": false,
   "homepage": "https://github.com/oshimish/dreamspell-math#readme",
   "author": {
     "name": "Raman Oshimish",
