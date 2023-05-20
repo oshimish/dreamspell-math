@@ -4,21 +4,21 @@ A JavaScript library with DreamSpell date, Zolkin & extras calculations.
 
 Details: [Law of Time](http://www.lawoftime.org/lawoftime.html)
 
-[![npm version](https://badge.fury.io/js/%40oshimish%2Fdreamspell-math.svg)](https://www.npmjs.com/package/@oshimish/dreamspell-math)
+[![npm version](https://badge.fury.io/js/%40oshimishi%2Fdreamspell-math.svg)](https://www.npmjs.com/package/@oshimishi/dreamspell-math)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 ## Notice
 
 The previous version of the package, `dreamspell-math` [![npm version](https://badge.fury.io/js/dreamspell-math.svg)](https://www.npmjs.com/package/dreamspell-math), is now obsolete and no longer maintained.
 
-Please switch to using `@oshimish/dreamspell-math` to ensure you have the latest updates, improvements, and bug fixes. 
+Please switch to using `@oshimishi/dreamspell-math` to ensure you have the latest updates, improvements, and bug fixes. 
 
 ## Installation
 
 You can install the new version of the package from npm using the following command:
 
 ```bash
-npm install @oshimish/dreamspell-math
+npm install @oshimishi/dreamspell-math
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ npm install @oshimish/dreamspell-math
 ### In Node.js (CommonJS)
 
 ```js
-const { dreamdate } = require('@oshimish/dreamspell-math');
+const { dreamdate } = require('@oshimishi/dreamspell-math');
 
 // anything that can be parsed to moment() can be used as input
 // See https://momentjs.com/docs/#/parsing/ for details
@@ -43,7 +43,7 @@ var kin = date.kin;
 First, you need to import the module:
 
 ```ts
-import * as g from '@oshimish/dreamspell-math';
+import * as g from '@oshimishi/dreamspell-math';
 ```
 
 Then you can use it in the same way:
@@ -55,7 +55,7 @@ const date = g.dreamdate([2018, 06, 26]);
 ## Examples
 
 ```js
-const { kin } = require('@oshimish/dreamspell-math');
+const { kin } = require('@oshimishi/dreamspell-math');
 
 const kin1 = kin(1);
 const tone1 = kin1.tone;
@@ -63,7 +63,7 @@ const sign1 = kin1.sign
 ```
 
 ```ts
-import * as g from '@oshimish/dreamspell-math';
+import * as g from '@oshimishi/dreamspell-math';
 
 const kin260 = g.kin(g.tone(13), g.sign(20));
 ```
