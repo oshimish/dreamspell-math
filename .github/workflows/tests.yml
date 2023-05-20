@@ -21,5 +21,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Check npm version and upgrade if necessary
+        run: sudo npm install -g npm@9 
       - run: npm ci
       - run: npm test
